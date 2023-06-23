@@ -1,5 +1,6 @@
-package com.api.hotel.model;
+package com.api.hotel.model.entities;
 
+import com.api.hotel.model.dto.CreateAddress;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,12 @@ public class Address {
     private String state;
     private String country;
 
-    @OneToOne
-    private Hotel hotel;
+    public Address(CreateAddress address) {
+        this.street = address.street();
+        this.number = address.number();
+        this.neighbourhood = address.neighbourhood();
+        this.city = address.city();
+        this.state = address.state();
+        this.country = address.country();
+    }
 }
