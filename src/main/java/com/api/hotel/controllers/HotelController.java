@@ -18,8 +18,8 @@ public class HotelController {
     private HotelService hotelService;
 
     @GetMapping()
-    public ResponseEntity<List<Hotel>> listHotels() {
-        return ResponseEntity.ok().body(hotelService.listHotels());
+    public ResponseEntity<List<HotelDTO>> listHotels() {
+        return ResponseEntity.ok().body(hotelService.listHotels().stream().map(HotelDTO::new).toList());
     }
 
     @PostMapping
