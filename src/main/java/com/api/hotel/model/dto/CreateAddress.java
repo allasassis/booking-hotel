@@ -1,4 +1,7 @@
 package com.api.hotel.model.dto;
 
-public record CreateAddress(String street, String number, String neighbourhood, String city, String state, String country) {
+import javax.validation.constraints.NotBlank;
+
+public record CreateAddress(@NotBlank String street, @NotBlank String number, @NotBlank String neighbourhood, @NotBlank String city,
+                            @NotBlank String state, @NotBlank String country) {
 }

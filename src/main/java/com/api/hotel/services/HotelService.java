@@ -1,5 +1,6 @@
 package com.api.hotel.services;
 
+import com.api.hotel.model.dto.HotelDTO;
 import com.api.hotel.model.entities.Hotel;
 import com.api.hotel.model.dto.CreateHotel;
 import com.api.hotel.repositories.AddressRepository;
@@ -22,11 +23,11 @@ public class HotelService {
         return hotelRepository.findAll();
     }
 
-    public Hotel registerHotel(CreateHotel createHotel) {
+    public HotelDTO registerHotel(CreateHotel createHotel) {
         Hotel hotel = new Hotel(createHotel);
         hotel.setRating(0);
         addressRepository.save(hotel.getAddress());
         hotelRepository.save(hotel);
-        return hotel;
+        return new HotelDTO(hotel);
     }
 }

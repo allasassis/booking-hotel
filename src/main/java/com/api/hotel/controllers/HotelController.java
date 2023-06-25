@@ -1,5 +1,6 @@
 package com.api.hotel.controllers;
 
+import com.api.hotel.model.dto.HotelDTO;
 import com.api.hotel.model.entities.Hotel;
 import com.api.hotel.model.dto.CreateHotel;
 import com.api.hotel.services.HotelService;
@@ -22,7 +23,7 @@ public class HotelController {
     }
 
     @PostMapping
-    public ResponseEntity<Hotel> registerHotel(@RequestBody CreateHotel createHotel) {
+    public ResponseEntity<HotelDTO> registerHotel(@RequestBody CreateHotel createHotel) {
         return ResponseEntity.status(201).body(hotelService.registerHotel(createHotel));
     }
 }
