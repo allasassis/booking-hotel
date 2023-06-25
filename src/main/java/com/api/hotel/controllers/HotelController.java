@@ -26,4 +26,10 @@ public class HotelController {
     public ResponseEntity<HotelDTO> registerHotel(@RequestBody CreateHotel createHotel) {
         return ResponseEntity.status(201).body(hotelService.registerHotel(createHotel));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteHotel(@PathVariable Long id) {
+        hotelService.deleteHotel(id);
+        return ResponseEntity.noContent().build();
+    }
 }
