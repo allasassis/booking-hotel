@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 @Service
@@ -52,6 +53,10 @@ public class CustomerService {
         }
 
         customer.setCheckOutDate(LocalDateTime.now());
+
+        // Calculating customer's bill
+        Long between = ChronoUnit.DAYS.between(customer.getCheckInDate(), customer.getCheckOutDate());
+        customer.setBill((double) (between * 30));
         customerRepository.save(customer);
         return customer;
     }

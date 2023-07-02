@@ -27,7 +27,6 @@ public class HotelService {
 
     public HotelDTO registerHotel(CreateHotel createHotel) {
         Hotel hotel = new Hotel(createHotel);
-        hotel.setRating(0);
         addressRepository.save(hotel.getAddress());
         hotelRepository.save(hotel);
         return new HotelDTO(hotel);
@@ -37,6 +36,11 @@ public class HotelService {
         Hotel hotel = verifyIfExists(id);
         hotelRepository.deleteById(id);
         addressRepository.deleteById(hotel.getAddress().getId());
+    }
+
+    public void review(Long hotelId, Integer note) {
+        Hotel hotel = verifyIfExists(hotelId);
+
     }
 
     private Hotel verifyIfExists(Long id) {

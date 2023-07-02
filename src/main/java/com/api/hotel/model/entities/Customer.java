@@ -55,9 +55,5 @@ public class Customer {
 
     public void setCheckOutDate(LocalDateTime checkOutDate) {
         this.checkOutDate = checkOutDate;
-        long between = ChronoUnit.DAYS.between(this.checkInDate, this.checkOutDate);
-        System.out.println(between);
-        // Calculating customer's bill
-        this.bill = (double) (between * 30);
     }
 }

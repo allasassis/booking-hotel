@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 @Table(name = "hotels")
@@ -31,10 +32,7 @@ public class Hotel {
 
     private String website;
     private String email;
-
-    @Max(5)
-    @Min(0)
-    private Integer rating;
+    private Double rating;
 
     public Hotel(CreateHotel createHotel) {
         this.name = createHotel.name();
