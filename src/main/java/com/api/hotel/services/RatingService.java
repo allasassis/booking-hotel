@@ -30,6 +30,11 @@ public class RatingService {
         Customer customer = verifyIfCustomerExists(customerId);
 
         List<Rating> ratings = ratingRepository.findByHotelId(hotel.getId());
+        for (Rating rating: ratings) {
+            if (rating.getCustomer().getId() == customerId) {
+                throw new APIException("This customer already voted.");
+            }
+        }
 
         Rating rating = new Rating(ratingValue, customer, hotel);
         ratings.add(rating);
